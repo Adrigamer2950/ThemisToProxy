@@ -1,0 +1,40 @@
+name: Build
+
+on: [
+  workflow_dispatch,
+  push
+]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+        name: Checkout sources
+
+      - uses: actions/setup-java@v4
+        name: Set up JDK 17
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - uses: gradle/actions/setup-gradle@v4
+        name: Setup Gradle
+
+      - name: Build Artifact
+        env:
+          COMMIT_SHA: "${{ github.sha }}"
+        run: |-
+          chmod +x ./gradlew && ./gradlew build
+          echo "GITHUB_SHA_SHORT=$(git rev-parse --short $COMMIT_SHA)" >> $GITHUB_ENV
+
+      - uses: actions/upload-artifact@v4
+        name: Save Artifact
+        with:
+          name: "ThemisToProxy-${{ env.GITHUB_SHA_SHORT }}"
+          path: build/libs/*.jar

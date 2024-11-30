@@ -1,0 +1,34 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+group = 'me.adrigamer2950.ttp'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(":bukkit")
+    implementation project(":velocity")
+
+    // Boosted YAML
+    implementation 'dev.dejvokep:boosted-yaml:1.3.7'
+}
+
+shadowJar {
+    archiveBaseName.set('ThemisToProxy')
+    archiveClassifier.set('')
+    //noinspection GroovyAssignabilityCheck
+    archiveVersion.set(version)
+}
+
+tasks.named("build").get().finalizedBy(shadowJar)
+
+compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}

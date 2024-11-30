@@ -1,0 +1,11 @@
+name: ThemisToProxy
+version: '${version}'
+main: me.adrigamer2950.ttp.bukkit.TTPBukkit
+api-version: '1.18'
+load: STARTUP
+authors:
+  - devadri
+description: Get Themis' notifications from anywhere in your network
+website: https://github.com/Adrigamer2950/ThemisToProxy
+depend:
+  - Themis
