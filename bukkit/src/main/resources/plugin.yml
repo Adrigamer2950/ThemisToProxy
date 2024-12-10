@@ -9,3 +9,4 @@ description: Get Themis' notifications from anywhere in your network
 website: https://github.com/Adrigamer2950/ThemisToProxy
 depend:
   - Themis
+folia-supported: true
