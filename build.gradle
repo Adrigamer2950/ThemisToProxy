@@ -39,7 +39,7 @@ modrinth {
     projectId = "themistoproxy"
     versionNumber = this.version
     versionType = "release"
-    uploadFile = jar
+    uploadFile = shadowJar
     syncBodyFrom = rootProject.file("README.md").text
     gameVersions = [
             "1.17",
