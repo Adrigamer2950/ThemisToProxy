@@ -1,6 +1,6 @@
 # ThemisToProxy
 <p align="center">
-    <img src="./logo.png" height="200" alt="Logo" />
+    <img src="https://raw.githubusercontent.com/Adrigamer2950/ThemisToProxy/refs/heads/master/logo.png" height="200" alt="Logo" />
 </p>
 
 Get Themis' notifications from anywhere in your network
