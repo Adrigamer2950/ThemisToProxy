@@ -40,7 +40,7 @@ jobs:
           path: build/libs/*.jar
 
       - name: Publish to Modrinth
-        if: "${{ github.repository == 'Adrigamer2950/ThemisToProxy' && startsWith(github.event.head_commit.message, 'release:') }}"
+        if: "${{ github.repository == 'Adrigamer2950/ThemisToProxy' && (startsWith(github.event.head_commit.message, 'release:') || github.event_name == 'workflow_dispatch') }}"
         env:
           MODRINTH_TOKEN: "${{ secrets.MODRINTH_TOKEN }}"
         run: "./gradlew modrinth modrinthSyncBody"
