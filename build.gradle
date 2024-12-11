@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'com.github.johnrengelman.shadow' version '8.1.1'
+    id "com.modrinth.minotaur" version "2.+"
 }
 
 group = 'me.adrigamer2950.ttp'
@@ -31,4 +32,35 @@ compileJava.options.encoding = 'UTF-8'
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
+}
+
+modrinth {
+    token = System.getenv("MODRINTH_TOKEN")
+    projectId = "themistoproxy"
+    versionNumber = this.version
+    versionType = "release"
+    uploadFile = jar
+    syncBodyFrom = rootProject.file("README.md").text
+    gameVersions = [
+            "1.17",
+            "1.17.1",
+            "1.18",
+            "1.18.1",
+            "1.18.2",
+            "1.19",
+            "1.19.1",
+            "1.19.2",
+            "1.19.3",
+            "1.19.4",
+            "1.20",
+            "1.20.1",
+            "1.20.2",
+            "1.20.3",
+            "1.20.4",
+            "1.20.5",
+            "1.20.6",
+            "1.21",
+            "1.21.1"
+    ]
+    loaders = ["bukkit", "spigot", "paper", "purpur", "folia", "velocity"]
 }
